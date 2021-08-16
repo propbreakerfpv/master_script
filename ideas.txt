@@ -1,0 +1,9 @@
+
+expression is a array[32] of tokens if an expression in code is more than 32 tokens
+long then we simply add to "expressions" together
+
+definition is a array[32] array of tokens that are not an expression
+
+line is an array[32] of "expressions" and "definitions"
+a line in code can't be longer than 32 "expressions" or "definitions"
+(at this time)
