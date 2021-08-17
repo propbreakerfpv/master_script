@@ -1,10 +1,9 @@
 #include "parce.h"
 
-struct Token** parce(char* code){
+Token** parce(char* code){
   int i = 0;
-  while (code[i] != "\0") {
-    printf("%s\n", code[i]);
-
+  while (code[i] != '\0') {
+    printf("%c\n", code[i]);
     i++;
   }
 }
