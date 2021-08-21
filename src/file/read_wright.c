@@ -1,12 +1,16 @@
 #include "readwright.h"
 
-char* read_file(char* filename){
-  FILE *file;
-  file = fopen(filename, "r");
+FILE fsetup(char* filename, char* r_w){
+  File *file;
+  file = fopen(filename, r_w)
   if(file == NULL){
-    printf("ERROR while opening%s\n", filename);
+  printf("ERROR while opening%s\n", filename);
   }
-  while((ch = fgetc(fp)) != EOF)
-      printf("%c", ch);
+  return file;
+}
 
-  }
+
+char* read_char_file(FILE file){
+  
+  fgets()
+}
