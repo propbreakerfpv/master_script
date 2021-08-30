@@ -1,3 +1,14 @@
+"""
+Todo:
+    error handling
+    and basicly evrything
+
+mabe to many classes?
+
+
+"""
+
+
 class Token():
 
     def __init__(self, type, value, line, row):
@@ -86,8 +97,8 @@ def get_tokens(code): # divids the code into tokens
     skip = -1
     expretion = False
     i = 0
-    for t in tokes:
-        if skip < i:
+    for t in tokes: # loop though all the token and make token objects
+        if skip < i: # skip is used if a case handals more than one token
             if t == "int":
                 var = Var("int", "int", 0, 0)
                 tokens.append(var)
@@ -140,6 +151,7 @@ def get_tokens(code): # divids the code into tokens
         i = i + 1
     return tokens
 
+# asins the variabls to the list
 def vars(tokens):
     varlist = {}
     i = 0
