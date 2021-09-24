@@ -1,15 +1,15 @@
 def genarate_asm(tokens):
     i = 0
     out = ""
-    out += "section .data\n"
+    #out += "section .data\n"
+    out += "section .text\n"
     for t in tokens:
         if t.type == "vardef" and tokens[i+1].type == "var":
             if tokens[i+3].value[0] == '"' or tokens[i+3].value[0] == "'":
                 out += "  " + tokens[i+1].value + " db " + tokens[i+3].value + ", 10\n"
             else:
                 out += "  " + tokens[i+1].value + " db " + tokens[i+3].value + "\n"
-        i = i + 1
-    out += "section .text\n"
+        i += 1
     out += "  global _start\n"
     out += "_start:\n"
     out += "  mov rax, 1\n"
