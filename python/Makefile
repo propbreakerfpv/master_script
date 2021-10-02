@@ -10,3 +10,7 @@ p:
 
 run:
 	./t
+
+clean:
+	rm t
+	rm t.o
