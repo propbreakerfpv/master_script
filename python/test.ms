@@ -1,6 +1,6 @@
 var variable_int  = 45;
 var variable_float = 3.52;
-var variable_char = 'A'
+var variable_char = 'A';
 var variablestring = "hello, world";
 
 var string = "ok?";

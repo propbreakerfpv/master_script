@@ -6,10 +6,11 @@ section .text
   string db "ok?", 10
   global _start
 _start:
+  mov 0x0, 0x450
   mov rax, 1
   mov rdi, 1
-  mov rsi, variablestring
-  mov rdx, 13
+  mov rsi, 0x0
+  mov rdx, 1
   syscall
   mov rax, 60
   mov rdi, 0
