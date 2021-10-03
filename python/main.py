@@ -54,6 +54,7 @@ def file_out(cont, file_path): # writes to a file
 
 
 def white_space(char): # retirns the type of white space
+                       # or "null" on failur
     match char:
         case "\n":
             return "nl"
@@ -64,6 +65,7 @@ def white_space(char): # retirns the type of white space
         case unknown_command:
             return "null"
 
+
 def get_tokens(code): # divids the code into tokens
     error = Error()
     toke = ""
@@ -73,12 +75,14 @@ def get_tokens(code): # divids the code into tokens
     for i in code: # loop though all the chars in are code
         if( i == '"' or i == "'") and not data:
             data = True
+
         elif i == '"' or i == "'":
             data = False
+
         if (white_space(i) != "null" or i == ";") and (not data): # end the token and remove white space
             if toke != "": tokes.append(toke)
             if i == ";":  tokes.append("\n;") # append new line chars
-            if i == "\n" and last_toke != ";": tokes.append("\n")# cheack for ";"
+            if i == "\n" and last_toke != ";": tokes.append("\n")# cheack for ';'
             toke = ""
             last_toke = i
             continue
@@ -88,11 +92,13 @@ def get_tokens(code): # divids the code into tokens
         toke += i
 
     # make tokens into objects
+    # random variables
     tokens = []
     line = 1
     skip = -1
     expretion = False
     i = 0
+
     for t in tokes: # loop though all the token and make token objects
         if skip < i: # skip is used if a case handals more than one token
 
@@ -100,26 +106,34 @@ def get_tokens(code): # divids the code into tokens
                 vardef = VarDef("vardef", "var", 0, 0)
                 tokens.append(vardef)
                 skip = i + 1
+
                 var = Var("var", tokes[i+1], 0, 0)
                 tokens.append(var)
                 expretion = True
+
             elif tokes[i-3] == "var" and expretion == True: # variable asinment
                 #(t[0] == "0" or t[0] == "1" or t[0] == "2" or t[0] == "3" or t[0] == "4" or t[0] == "5" or t[0] == "6" or t[0] == "7" or t[0] == "8" or t[0] == "9") and expretion == True:
                 exp = Exp("exp", t, 0, 0)
                 tokens.append(exp)
+
             elif t == "=":
                 equals = Equals("equals", "=", 0, 0)
                 tokens.append(equals)
+
             elif t == "\n" or t == "\n;":
-                if t == "\n":
+                if t == "\n" and white_space(tokes[i-1]) == "null":
                     error.error("missing ';'",str(line))
+
                 new = Newline("newline", "\n", 0, 0)
                 tokens.append(new)
                 expretion = False
                 line = line + 1
+
             else:
-                error.error("unknown token", line)
+                error.worn("unknown token", line)
+
         i = i + 1
+
     return tokens
 
 

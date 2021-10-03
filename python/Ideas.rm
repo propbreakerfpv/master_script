@@ -1,7 +1,6 @@
 To do:
    Can you use virtual memory?
      If so how cuss that would be garate
-   
-   Find a way to manage memory and garbage collection 
-   
-   
+
+learn brk and sbrk
+    

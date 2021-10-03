@@ -11,13 +11,14 @@ class Error():
     def error(self, mesage, line):
         print(Fore.RED + "[ERROR]: " + Style.RESET_ALL + mesage + " on line: " + str(line))
 
+    def worn(self, mesage, line):
+        print(Fore.YELLOW + "[worning]: " + Style.RESET_ALL + mesage + " on line: " + str(line))
+
+    def print(self, mesage):
+        print(Fore.RED + mesage + Style.RESET_ALL)
+
 if __name__ == "__main__":
     init()
     from colorama import Fore, Back, Style
     error = Error()
     error.error("invaled sintax")
-    #print(Fore.RED + 'some red text')
-    #print(Back.GREEN + 'and with a green background')
-    #print(Style.DIM + 'and in dim text')
-    #print(Style.RESET_ALL)
-    #print('back to normal now')
