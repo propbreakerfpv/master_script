@@ -2,5 +2,9 @@ To do:
    Can you use virtual memory?
      If so how cuss that would be garate
 
-learn brk and sbrk
-    
+learn brk and sbrk:
+  deference between brk/sbrk and mmap
+  https://cboard.cprogramming.com/linux-programming/101090-what-differences-between-brk-mmap.html
+
+  mmap example
+  https://stackoverflow.com/questions/22919019/unable-to-allocate-memory-with-mmap-in-x86-linux-assembly-language
